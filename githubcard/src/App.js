@@ -4,6 +4,7 @@ import React from "react";
 import axios from "axios";
 import Followers from "./components/Followers";
 import User from "./components/User";
+import SearchForm from "./components/SeachForm";
 
 class App extends React.Component {
   constructor() {
@@ -11,6 +12,7 @@ class App extends React.Component {
     this.state = {
       currentUser: {},
       followers: [],
+      search: {},
     };
   }
 
@@ -38,6 +40,10 @@ class App extends React.Component {
       });
   }
 
+  componentDidUpdate() {
+    console.log("CDU");
+  }
+
   render() {
     return (
       <div className="App">
@@ -47,6 +53,7 @@ class App extends React.Component {
         {this.state.followers.map((foll) => {
           return <Followers handleFollow={foll} />;
         })}
+        <SearchForm />
       </div>
     );
   }
